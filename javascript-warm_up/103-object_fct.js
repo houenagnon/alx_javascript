@@ -1,16 +1,14 @@
 #!/usr/bin/node
 const myObject = {
   type: 'object',
-  value: 12
+  value: 12,
+  incr: () => {
+    myObject.value++;
+  }
 };
 console.log(myObject);
 
-function incr () {
-  this.value++;
-}
 
-// Utilisez bind pour lier la fonction incr à myObject
-myObject.incr = incr.bind(myObject);
 
 
 myObject.incr();
