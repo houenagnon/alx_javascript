@@ -1,6 +1,6 @@
 #!/usr/bin/node
-const tabl = ["C is fun", "Python is cool", "JavaScript is amazing"];
+const tabl = ['C is fun', 'Python is cool', 'JavaScript is amazing'];
 
 tabl.forEach(element => {
-    console.log(element);
+  console.log(element);
 });
