@@ -1,6 +1,4 @@
-const Rectangle = require('./1-rectangle');
+const Square = require('./6-square');
 
-const r1 = new Rectangle(2, 3);
-console.log(r1);
-console.log(r1.width);
-console.log(r1.height);
+const s1 = new Square(4);
+s1.charPrint('Merveil');
