@@ -6,5 +6,31 @@
 //     Wedge Antilles is character ID 18 - your script must use this ID for filtering the result of the API
 //     You must use the module request
 
-const req = require("request");
+const { object } = require('assert-plus');
+const req = require('request');
+let data = '';
 
+req.get('https://swapi-api.alx-tools.com/api/films/')
+  .on('data', (chunk) => {
+    data += chunk;
+  })
+  .on('end', () => {
+    response = JSON.parse(data);
+    // console.log((response.results).length)
+    //  console.log(response.results);
+    let count = 0;
+    for (const res in response.results) {
+      const characters = response.results[res].characters;
+      //  console.log(response.results[res].title + response.results[res].characters);
+      //  console.log(Object.keys(response.results[res]));
+      for (const c in characters) {
+        if (characters[c] === 'https://swapi-api.alx-tools.com/api/people/18/') {
+          count += 1;
+        }
+      }
+    }
+    console.log(count);
+  })
+  .on('error', (error) => {
+    console.error('Request error:', error);
+  });
