@@ -25,7 +25,7 @@ req.get(url, {encoding: "utf-8"})
       //  console.log(response.results[res].title + response.results[res].characters);
       //  console.log(Object.keys(response.results[res]));
       for (const c in characters) {
-        if (characters[c] === 'https://swapi-api.alx-tools.com/api/people/18/') {
+        if (characters[c].includes(18)) {
           count += 1;
         }
       }
