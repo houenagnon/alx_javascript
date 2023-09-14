@@ -3,21 +3,26 @@
 const request = require('request');
 const url = process.argv[2];
 
-const response = {};
+const chunks = [];
 
 request.get(url)
-  .on('data', (data) => {
-    const todos = JSON.parse(data);
-
-    todos.forEach((todo) => {
-      if (todo.completed) {
-        response[todo.userId] = (response[todo.userId] || 0) + 1;
-      }
-    });
+  .on('data', data => {
+    chunks.push(data);
   })
   .on('end', () => {
+    const bufferData = Buffer.concat(chunks);
+    const response = {};
+    JSON.parse(bufferData)
+      .map((todo) => {
+         if (!response.hasOwnProperty(todo.userId) && todo.completed) {
+            response[todo.userId] = 0;
+         }
+
+         let counter = response[todo.userId];
+         if (todo.completed) {
+           counter = counter + 1;
+           response[todo.userId] = counter
+         }
+      });
     console.log(response);
-  })
-  .on('error', (error) => {
-    console.error('Une erreur s\'est produite :', error);
   });
