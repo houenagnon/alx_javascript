@@ -8,9 +8,10 @@
 
 const { object } = require('assert-plus');
 const req = require('request');
+const url = process.argv[2];
 let data = '';
 
-req.get('https://swapi-api.alx-tools.com/api/films/')
+req.get(url, {encoding: "utf-8"})
   .on('data', (chunk) => {
     data += chunk;
   })
