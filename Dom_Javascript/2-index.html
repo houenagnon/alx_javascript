@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Modifying Elements</title>
+  <style>
+    img {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <img id="myImage" src="image.jpg" alt="My Image">
+
+  <script>
+    let imgId = document.getElementById("myImage");
+    imgId.src = "new_image.jpg";
+    imgId.alt = "New image";
+    imgId.style.border = "2px solid red";
+  </script>
+</body>
+</html>

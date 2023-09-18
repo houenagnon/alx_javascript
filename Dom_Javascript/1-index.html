@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Selecting Elements</title>
+  <style>
+    .highlight {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <p class="highlight">This is a highlighted paragraph.</p>
+  <p>This is a normal paragraph.</p>
+
+  <script>
+        const pTag = document.querySelectorAll("p");
+        pTag[0].style = "font-weight: bold";
+  </script>
+</body>
+</html>

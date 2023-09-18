@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Creating and Removing Elements</title>
+</head>
+<body>
+  <div id="container"></div>
+  <script>
+    const container = document.getElementById("container");
+    
+    const pTag = document.createElement("p");
+    pTag.innerHTML = "New paragraph";
+    container.appendChild(pTag);
+
+  </script>
+</body>
+</html>
