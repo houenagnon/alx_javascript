@@ -1,41 +1,28 @@
-let firstname = document.getElementById("firstname");
-let email = document.getElementById("email");
+function setCookies() {
+  //DOC: Get the values from input fields
+  const firstNameValue = document.getElementById('firstname').value
+  const emailValue = document.getElementById('email').value
 
-function setCookie(cname, cvalue, exdays) {
-    const d = new Date();
-    d.setTime(d.getTime() + (exdays*24*60*60*1000));
-    let expires = "expires="+ d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  //DOC: Set the cookies
+  document.cookie = `firstname=${firstNameValue};`
+  document.cookie = `email=${emailValue};`
+
+  console.log('Cookies have been set.')
 }
 
-function getCookie(cname) {
-    let name = cname + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
-    for(let i = 0; i <ca.length; i++) {
-      let c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return "";
-  }
+function showCookies() {
+  //DOC: Get the cookie string
+  const cookieString = document.cookie
 
+  //DOC: Create a new paragraph element
+  const paragraph = document.createElement('p')
 
+  //DOC: Set the inner HTML of the paragraph to display the cookies
+  paragraph.innerHTML = `Cookies: ${cookieString}`
 
-function setCookies(){
-    setCookie("firstname", firstname.value, 0.5); 
-    setCookie("email", email.value, 0.5);
-    firstname.value ="";
-    email.value ="";
+  //DOC: Select the div by its ID (replace 'your-div-id' with the actual ID)
+  const divElement = document.getElementById('cookies')
+
+  //DOC: Append the paragraph to the selected div
+  divElement.appendChild(paragraph)
 }
-
-function showCookies(){
-    const para = document.createElement("p");
-    para.innerText = getCookie(firstname) +" "+ getCookie(email);
-    document.body.appendChild(para);
-}
-
